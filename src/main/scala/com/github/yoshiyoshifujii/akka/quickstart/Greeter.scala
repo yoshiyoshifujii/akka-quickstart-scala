@@ -5,7 +5,7 @@ import akka.actor.typed.{ ActorRef, Behavior }
 
 object Greeter {
   final case class Greet(whom: String, replyTo: ActorRef[Greeted])
-  final case class Greeted(whom: String, replyTo: ActorRef[Greet])
+  final case class Greeted(whom: String, from: ActorRef[Greet])
 
   def apply(): Behavior[Greet] =
     Behaviors.receive { (context, message) =>
